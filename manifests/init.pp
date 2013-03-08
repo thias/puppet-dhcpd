@@ -14,44 +14,44 @@
 #
 # Sample Usage :
 #  class { 'dhcpd':
-#      configsource => 'puppet:///files/dhcpd.conf-foo',
-#      # Restrict listening to a single interface
-#      dhcpdargs    => 'br1',
-#      # Default is to enable but allow to be stopped (for active/passive)
-#      ensure       => 'running',
+#    configsource => 'puppet:///files/dhcpd.conf-foo',
+#    # Restrict listening to a single interface
+#    dhcpdargs    => 'eth1',
+#    # Default is to enable but allow to be stopped (for active/passive)
+#    ensure       => 'running',
 #  }
 #
 class dhcpd (
-    $configsource,
-    $dhcpdargs = '',
-    $ensure = undef,
-    $enable = true
+  $configsource,
+  $dhcpdargs = '',
+  $ensure = undef,
+  $enable = true
 ) {
 
-    package { 'dhcp': ensure => installed }
+  package { 'dhcp': ensure => installed }
 
-    service { 'dhcpd':
-        ensure    => $ensure,
-        enable    => $enable,
-        hasstatus => true,
-        require   => Package['dhcp'],
-    }
+  service { 'dhcpd':
+    ensure    => $ensure,
+    enable    => $enable,
+    hasstatus => true,
+    require   => Package['dhcp'],
+  }
 
-    file { '/etc/sysconfig/dhcpd':
-        content => template('dhcpd/dhcpd.sysconfig.erb'),
-        notify  => Service['dhcpd'],
-    }
+  file { '/etc/sysconfig/dhcpd':
+    content => template('dhcpd/dhcpd.sysconfig.erb'),
+    notify  => Service['dhcpd'],
+  }
 
-    if $::operatingsystemrelease < 6 {
-        $dhcpd_conf = '/etc/dhcpd.conf'
-    } else {
-        $dhcpd_conf = '/etc/dhcp/dhcpd.conf'
-    }
-    file { $dhcpd_conf :
-        source  => $configsource,
-        require => Package['dhcp'],
-        notify  => Service['dhcpd'],
-    }
+  if $::operatingsystemrelease < 6 {
+    $dhcpd_conf = '/etc/dhcpd.conf'
+  } else {
+    $dhcpd_conf = '/etc/dhcp/dhcpd.conf'
+  }
+  file { $dhcpd_conf :
+    source  => $configsource,
+    require => Package['dhcp'],
+    notify  => Service['dhcpd'],
+  }
 
 }
 

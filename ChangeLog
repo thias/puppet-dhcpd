@@ -1,3 +1,7 @@
+2013-03-08 - 0.3.0
+* Update README and use markdown.
+* Change to 2 space indent.
+
 2012-09-19 - 0.2.2
 * Lower the lease time in the example, much more useful in the real world.
 
