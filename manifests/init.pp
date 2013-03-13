@@ -1,10 +1,13 @@
 # Class: dhcpd
 #
-# Installs and enables a dhcpd server.
+# Installs and enables a dhcpd server. You must specify either `$configsource`
+# or `$configcontent`.
 #
 # Parameters:
 #  $configsource:
-#    Puppet location of the configuration file to use. Mandatory.
+#    Puppet location of the configuration file to use. Default: none
+#  $configcontent:
+#    Content of the configuration file to use. Default: none
 #  $dhcpdargs:
 #    Command-line arguments to be added to dhcpd. Default: empty
 #  $ensure:
@@ -22,10 +25,11 @@
 #  }
 #
 class dhcpd (
-  $configsource,
-  $dhcpdargs = '',
-  $ensure = undef,
-  $enable = true
+  $configsource  = undef,
+  $configcontent = undef,
+  $dhcpdargs     = '',
+  $ensure        = undef,
+  $enable        = true
 ) {
 
   package { 'dhcp': ensure => installed }
@@ -49,6 +53,7 @@ class dhcpd (
   }
   file { $dhcpd_conf :
     source  => $configsource,
+    content => $configcontent,
     require => Package['dhcp'],
     notify  => Service['dhcpd'],
   }
