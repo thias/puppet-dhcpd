@@ -11,11 +11,13 @@ complexity. Included is a dhcpd.conf-example file to get started.
 
 ## Examples
 
-    class { 'dhcpd':
-      configsource => 'puppet:///modules/mymodule/dhcpd.conf-foo',
-      # Restrict listening to a single interface
-      dhcpdargs    => 'eth1',
-      # Default is to enable but allow to be stopped (for active/passive)
-      ensure       => 'running',
-    }
+```puppet
+class { '::dhcpd':
+  configsource => 'puppet:///modules/mymodule/dhcpd.conf-foo',
+  # Restrict listening to a single interface
+  dhcpdargs    => 'eth1',
+  # Default is to enable but allow to be stopped (for active/passive)
+  ensure       => 'running',
+}
+```
 
