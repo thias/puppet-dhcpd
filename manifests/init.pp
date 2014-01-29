@@ -29,7 +29,7 @@ class dhcpd (
   $configcontent = undef,
   $dhcpdargs     = '',
   $ensure        = undef,
-  $enable        = true
+  $enable        = true,
 ) {
 
   package { 'dhcp': ensure => installed }
@@ -42,6 +42,9 @@ class dhcpd (
   }
 
   file { '/etc/sysconfig/dhcpd':
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
     content => template('dhcpd/dhcpd.sysconfig.erb'),
     notify  => Service['dhcpd'],
   }
@@ -52,6 +55,9 @@ class dhcpd (
     $dhcpd_conf = '/etc/dhcp/dhcpd.conf'
   }
   file { $dhcpd_conf :
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
     source  => $configsource,
     content => $configcontent,
     require => Package['dhcp'],
