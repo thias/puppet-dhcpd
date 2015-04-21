@@ -49,7 +49,8 @@ class dhcpd (
     notify  => Service['dhcpd'],
   }
 
-  if $::operatingsystemrelease < 6 {
+  # RHEL 5 has a different location
+  if versioncmp($::operatingsystemrelease, '6') < 0 {
     $dhcpd_conf = '/etc/dhcpd.conf'
   } else {
     $dhcpd_conf = '/etc/dhcp/dhcpd.conf'

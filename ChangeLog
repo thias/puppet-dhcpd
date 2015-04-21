@@ -1,3 +1,5 @@
+* Fix OS version comparison for Puppet 4.
+
 2014-01-29 - 0.3.2
 * Add missing owner, group and mode for files.
 
