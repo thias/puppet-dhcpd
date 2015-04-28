@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "Matthias Saou",
   "license": "Apache-2.0",
-  "summary": "Install, enable and configure a Dynamic Host Control Protocol (DHCP) server."
+  "summary": "Install, enable and configure a Dynamic Host Control Protocol (DHCP) server.",
   "source": "git://github.com/thias/puppet-dhcpd",
   "project_page": "https://github.com/thias/puppet-dhcpd",
   "issues_url": "https://github.com/thias/puppet-dhcpd/issues",
