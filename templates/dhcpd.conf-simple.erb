@@ -1,0 +1,82 @@
+<%# This template is provided as a convenience -%>
+<%# and might change without warning -%>
+<%
+
+if @dhcpd_interface
+  ipaddress = scope.lookupvar("::ipaddress_#{dhcpd_interface}")
+  netmask = scope.lookupvar("::netmask_#{dhcpd_interface}")
+else
+  if @dhcpd_ipaddress
+    ipaddress = @dhcpd_ipaddress
+  else
+    ipaddress = scope.lookupvar('::ipaddress')
+  end
+  if @dhcpd_netmask
+    netmask = @dhcpd_netmask
+  else
+    netmask = scope.lookupvar('::netmask')
+  end
+end
+
+if @dhcpd_subnet
+  subnet = @dhcpd_subnet
+else
+  subnet = ipaddress.rpartition('.')[0] + '.0'
+end
+
+if @dhcpd_routers
+  routers = @dhcpd_routers
+else
+  routers = ipaddress
+end
+
+if @dhcpd_domain_name_servers
+  domain_name_servers = @dhcpd_domain_name_servers
+else
+  domain_name_servers = '8.8.8.8'
+end
+
+# We assume we'll be dealing with /24 or smaller
+prefix = subnet.rpartition('.')[0]
+if @dhcpd_range_start and @dhcpd_range_end
+  range = prefix + '.' + dhcpd_range_start + ' ' + prefix + '.' + dhcpd_range_end
+else
+  range = prefix + '.240 ' + prefix + '.249'
+end
+
+if @dhcpd_default_lease_time
+  default_lease_time = @dhcpd_default_lease_time
+else
+  default_lease_time = '21600'
+end
+
+if @dhcpd_max_lease_time
+  max_lease_time = @dhcpd_max_lease_time
+else
+  max_lease_time = '43200'
+end
+
+-%>
+#
+# DHCP Server Configuration file.
+#
+
+ddns-update-style interim;
+ignore client-updates;
+
+subnet <%= subnet %> netmask <%= netmask %> {
+
+  option routers              <%= routers %>;
+  option subnet-mask          <%= netmask %>;
+
+  <%- if @dhcpd_domain_name -%>
+  option domain-name          "<%= @dhcpd_domain_name %>";
+  <%- end -%>
+  option domain-name-servers  <%= domain_name_servers %>;
+
+  range dynamic-bootp         <%= range %>;
+  default-lease-time          <%= default_lease_time %>;
+  max-lease-time              <%= max_lease_time %>;
+
+}
+

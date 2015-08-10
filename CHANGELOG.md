@@ -1,3 +1,5 @@
+* Include example dhcpd.conf template.
+
 #### 2015-04-28 - 1.0.0
 * Fix OS version comparison for Puppet 4.
 * Replace Modulefile with metadata.json.
