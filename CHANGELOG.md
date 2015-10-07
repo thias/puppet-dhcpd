@@ -1,4 +1,6 @@
+#### 2015-10-07 - 1.0.1
 * Include example dhcpd.conf template.
+* Update README.
 
 #### 2015-04-28 - 1.0.0
 * Fix OS version comparison for Puppet 4.

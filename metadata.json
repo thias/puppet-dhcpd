@@ -1,13 +1,13 @@
 {
   "name": "thias-dhcpd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Matthias Saou",
   "license": "Apache-2.0",
   "summary": "Install, enable and configure a Dynamic Host Control Protocol (DHCP) server.",
   "source": "git://github.com/thias/puppet-dhcpd",
   "project_page": "https://github.com/thias/puppet-dhcpd",
   "issues_url": "https://github.com/thias/puppet-dhcpd/issues",
-  "tags": ["dhcpd", "dhcp"],
+  "tags": [ "dhcpd", "dhcp" ],
   "operatingsystem_support": [
     {
     "operatingsystem": "RedHat",
