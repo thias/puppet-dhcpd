@@ -56,13 +56,14 @@ class dhcpd (
     $dhcpd_conf = '/etc/dhcp/dhcpd.conf'
   }
   file { $dhcpd_conf :
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    source  => $configsource,
-    content => $configcontent,
-    require => Package['dhcp'],
-    notify  => Service['dhcpd'],
+    owner        => 'root',
+    group        => 'root',
+    mode         => '0644',
+    source       => $configsource,
+    content      => $configcontent,
+    require      => Package['dhcp'],
+    validate_cmd => '/usr/sbin/dhcpd -t -cf %',
+    notify       => Service['dhcpd'],
   }
 
 }
