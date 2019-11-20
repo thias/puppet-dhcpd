@@ -1,3 +1,6 @@
+#### 2019-11-20 - 1.0.2
+* Add dhcpd file validation (#2, @osgpcq).
+
 #### 2015-10-07 - 1.0.1
 * Include example dhcpd.conf template.
 * Update README.
