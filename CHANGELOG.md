@@ -1,3 +1,6 @@
+#### 2021-03-18 - 1.0.2
+* Update dhcp-server package name on RHEL8+.
+
 #### 2015-10-07 - 1.0.1
 * Include example dhcpd.conf template.
 * Update README.

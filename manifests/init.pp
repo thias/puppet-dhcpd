@@ -32,7 +32,16 @@ class dhcpd (
   $enable        = true,
 ) {
 
-  package { 'dhcp': ensure => installed }
+  if $::osfamily == 'RedHat' and versioncmp($::operatingsystemmajrelease, '8') >= 0 {
+    $package = 'dhcp-server'
+  } else {
+    $package = 'dhcp'
+  }
+
+  package { $package:
+    ensure => 'installed',
+    alias  => 'dhcp',
+  }
 
   service { 'dhcpd':
     ensure    => $ensure,
