@@ -1,3 +1,6 @@
+#### 2021-03-18 - 1.0.3
+* Update dhcp-server package name on RHEL8+.
+
 #### 2019-11-20 - 1.0.2
 * Add dhcpd file validation (#2, @osgpcq).
 

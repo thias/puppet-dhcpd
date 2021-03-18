@@ -1,6 +1,6 @@
 {
   "name": "thias-dhcpd",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Matthias Saou",
   "license": "Apache-2.0",
   "summary": "Install, enable and configure a Dynamic Host Control Protocol (DHCP) server.",
