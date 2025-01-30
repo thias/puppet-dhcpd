@@ -1,3 +1,5 @@
+* Remove legacy facts usage.
+
 #### 2021-03-18 - 1.0.3
 * Update dhcp-server package name on RHEL8+.
 

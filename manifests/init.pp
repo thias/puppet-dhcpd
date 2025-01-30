@@ -32,7 +32,7 @@ class dhcpd (
   $enable        = true,
 ) {
 
-  if $::osfamily == 'RedHat' and versioncmp($::operatingsystemmajrelease, '8') >= 0 {
+  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'], '8') >= 0 {
     $package = 'dhcp-server'
   } else {
     $package = 'dhcp'
@@ -59,7 +59,7 @@ class dhcpd (
   }
 
   # RHEL 5 has a different location
-  if versioncmp($::operatingsystemrelease, '6') < 0 {
+  if versioncmp($facts['os']['release']['major'], '6') < 0 {
     $dhcpd_conf = '/etc/dhcpd.conf'
   } else {
     $dhcpd_conf = '/etc/dhcp/dhcpd.conf'
