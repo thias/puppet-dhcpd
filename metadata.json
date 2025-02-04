@@ -1,6 +1,6 @@
 {
   "name": "thias-dhcpd",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Matthias Saou",
   "license": "Apache-2.0",
   "summary": "Install, enable and configure a Dynamic Host Control Protocol (DHCP) server.",
@@ -11,17 +11,17 @@
   "operatingsystem_support": [
     {
     "operatingsystem": "RedHat",
-    "operatingsystemrelease": [ "5", "6", "7", "8" ]
+    "operatingsystemrelease": [ "5", "6", "7", "8", "9" ]
     },
     {
     "operatingsystem": "CentOS",
-    "operatingsystemrelease": [ "5", "6", "7", "8" ]
+    "operatingsystemrelease": [ "5", "6", "7", "8", "9" ]
     }
   ],
   "requirements": [
     {
     "name": "puppet",
-    "version_requirement": ">=2.7.20 <8.0.0"
+    "version_requirement": ">=2.7.20 <9.0.0"
     }
   ],
   "dependencies": [
